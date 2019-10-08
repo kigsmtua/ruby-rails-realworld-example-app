@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
- 
+
   validates :username, uniqueness:{case_sensitive:true},
             allow_blank:false,
             presence: true,
