@@ -11,7 +11,7 @@ gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 # Devise doesn't support rails 6 yet
-gem 'devise', git: 'https://github.com/plataformatec/devise'
+gem 'devise', '~> 4.7.0'
 gem 'acts_as_follower', github: 'tcocca/acts_as_follower', branch: 'master'
 
 
