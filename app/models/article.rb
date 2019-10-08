@@ -1,13 +1,23 @@
 class Article < ApplicationRecord
   belongs_to :user
-  has_many :comments, :dependent, :destroy
-  has_many :favorites, :dependent, :destroy
+
+  has_many :favorites, dependent: :destroy
+  has_many :comments, dependent: :destroy
+
+  scope :authored_by, ->(username) { where(user: User.where(username: username)) }
+  scope :favorited_by, -> (username) { joins(:favorites).where(favorites: { user: User.where(username: username) }) }
 
   validates :title, presence:true, allow_blank: true
   validates :body, presence:true, allo_blank:false
   validates :slug, uniqueness: true, exclusion: { in: ['feed'] }
 
-  scope :authored_by, -> (username) { where(user:User.where(username: username)) }
-  scope :favorited_by, -> (username) {join(:favorites).where(user:User.where(username: username))}
+  # This is what the application values come up along for users
+  # This just means that the values come along here
+  # And mock and stub whatever it is that is returned heer
+  has_many :articles, dependent: :destroy
+
+  before_validation do
+    self.slug ||= "#{title.to_s.parameterize}-#{rand(36**6).to_s(36)}"
+  end
 
 end

@@ -3,15 +3,16 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.all.includes(:user)
-    @articles = Article.authored_by(params[:author]) if params [:author].present?
-    @articles = Article.favorited_by(params[:favorited]) if params[:favorited].present?
+
+    @articles = @articles.authored_by(params[:author]) if params[:author].present?
+    @articles = @articles.favorited_by(params[:favorited]) if params[:favorited].present?
 
     @articles_count = @articles.count
 
-    @articles.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 20)
+    @articles = @articles.order(created_at: :desc).offset(params[:offset] || 0).limit(params[:limit] || 20)
   end
 
-  # This is what happens when you dont include the values that come up for usage hre
+  # This is what happens when you build a ruby app for no maintainabilituy
   def feed
     @articles = Article.includes(:user).where(user: current_user.following_users)
 
