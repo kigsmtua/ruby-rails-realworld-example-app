@@ -13,7 +13,6 @@ class UserController < ApplicationController
     end
   end
 
-  # This is what happens when the values
   private
   def user_params
     params.require(:user).permit(:username, :email, :password, :bio, :image)
