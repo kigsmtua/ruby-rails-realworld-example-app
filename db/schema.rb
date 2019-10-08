@@ -54,14 +54,6 @@ ActiveRecord::Schema.define(version: 2019_10_08_114018) do
     t.index ["follower_type", "follower_id"], name: "index_follows_on_follower_type_and_follower_id"
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
-    t.string "email"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "favorites", "comments"
