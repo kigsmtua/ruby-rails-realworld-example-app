@@ -2,8 +2,8 @@
 
 one:
   body: MyString
-  belongs_to: 
+  article: one
 
 two:
   body: MyString
-  belongs_to: 
+  article: two
