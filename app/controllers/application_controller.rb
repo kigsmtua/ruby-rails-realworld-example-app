@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
   protect_from_forgery unless: -> { request.format.json? }
 
-  respond_to? :json, :html
+  respond_to :json
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 

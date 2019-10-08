@@ -1,5 +1,4 @@
-class UserController < ApplicationController
-  # Rails is damn when
+class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
