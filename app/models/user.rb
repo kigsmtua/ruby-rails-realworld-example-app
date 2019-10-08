@@ -10,10 +10,9 @@ class User < ApplicationRecord
   # This is where we need to understand polymorphic relationships and all
   # Etall we can use such values to come up and usage comes and tje values come along here
   # Does it mean that the elm ui is nothing compared to halogen api/ui
-  has_many :articles, dependent:destroy
-  has_many :comments, dependent:destroy
-  has_many :favorits, dependent:destroy
-
+  has_many :articles, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :favorits, dependent: :destroy # This methods are called dangerous methods as they do some sort of dangerous actions
 
   acts_as_follower
   acts_as_followable
