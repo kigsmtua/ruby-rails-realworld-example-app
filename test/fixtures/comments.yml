@@ -1,5 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
+# This is just a ploy to test out applications and see what is actually used here
+# We need to come along as such values need to come alongside the use
 one:
   body: MyString
   article: one
