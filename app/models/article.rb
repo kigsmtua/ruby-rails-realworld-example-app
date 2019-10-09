@@ -13,7 +13,6 @@ class Article < ApplicationRecord
   validates :slug, uniqueness: true, exclusion: { in: ['feed'] }
 
 
-  # This is where the values f
   has_many :articles, dependent: :destroy
 
   before_validation do
